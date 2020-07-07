@@ -17,10 +17,11 @@ let markHeight = 1.65;
 
 // question2:
 let johnBmi = johnMass / johnHeight **2;
-console.log(`John BMI is ${johnBmi}`);
-let markBmi = markMass / markHeight **2;
-console.log(`Mark BMI is ${markBmi}`);
+console.log(`John BMI is ${johnBmi}`);  // John BMI is 23.54788
 
+let markBmi = markMass / markHeight **2;
+console.log(`Mark BMI is ${markBmi}`); // Mark BMI is 33.0578
+ 
 // qquestion3:
 let markBiggerThanJohn = markBmi > johnBmi;
-console.log(`Is Mark's BMI higher than John's? : ${markBiggerThanJohn}.`);
+console.log(`Is Mark's BMI higher than John's? : ${markBiggerThanJohn}.`); //true
