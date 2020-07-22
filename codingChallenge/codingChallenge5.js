@@ -87,13 +87,7 @@ mark.tipsCal = function(){
     }
 
 console.log(mark.tipsCal()); 
-/*
-5. Implement the same functionality as before, this time using Mark's tipping rules
-6. Create a function (not a method) to calculate the average of a given array of tips. HINT: Loop over the array, and in each iteration store the
- current sum in a variable (starting from 0). After you have the sum of the array, divide it by the number of elements in it (that's how you calculate the average)
-7. Calculate the average tip for each family
-8. Log to the console which family paid the highest tips on average
-*/
+
 // question6: 
 const averageTips = (arr) => {
     var sum = arr.reduce(function(a, b){ // sum all elements in arr
