@@ -28,82 +28,90 @@ GOOD LUCK 😀
 
 // question1:
 
-let calculator = {
+let john = {
     bills : [124, 48, 268, 180, 42],
-    tips : [],
+    totalPaid : [],
+    tips: [],
 };
 
 // question2 and 3:
-
-calculator.tipsCalculator = function(){
-    let percent = [0.2, 0.15, 0.1];
-    this.tip = 0;
-    let bill = prompt("Choose your bill's value: 124, 48, 268, 180, 42 or stop to end: ");
-    function oneTip(){
-        for(let i = 0; i < this.bills.length; i++){ // we go through the list
-            if (bill === this.bills[i]){ // User's input is compared to all value existing in the list to see if it matches or not.
-                if(this.bills[i] < 50) {
-                    this.tip = this.bills[i] * percent[0]
-                    //this.tips.push(this.tip)
-                } else if(this.bills[i] >= 50 && this.bills[i] <= 200){
-                    this.tip = this.bills[i] * percent[1]
-                   
-                } else{
-                    this.tip = this.bills[i] * percent[2]
-                    
-                } // tips =[ f(a)]
-                return this.tip;
-            } else {
-               alert("Your value is not in our bill's list!")
-               break
-    
-            }
-        }
-    
+let percent = [0.2, 0.15, 0.1];
+john.tipsCal = function(){
+    for(let i = 0;i < this.bills.length; i++){
+        if(this.bills[i] < 50){
+            this.tips.push(this.bills[i] * percent[0])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+        } else if(this.bills[i] >= 50 && this.bills[i] < 200){
+            this.tips.push(this.bills[i] * percent[1])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+        }else{
+            this.tips.push(this.bills[i] * percent[2])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+        }   
     }
-    // let i = 0;
-    // while(true){
-    //     let b = prompt("Choose your bill's value: 124, 48, 268, 180, 42 or stop to end: ");
-    //     bill = parseInt(b)
-    //     if (bill === this.bills[i]){ // User's input is compared to all value existing in the list to see if it matches or not.
-    //         if(this.bills[i] < 50) {
-    //             this.tip = this.bills[i] * percent[0]
-    //             //this.tips.push(this.tip)
-    //             document.write(this.tip);
-    //             //break
-    //         } else if(this.bills[i] >= 50 && this.bills[i] <= 200){
-    //             this.tip = this.bills[i] * percent[1]
-    //             document.write(this.tip);
-    //             //break
-               
-    //         } else{
-    //             this.tip = this.bills[i] * percent[2]
-    //             document.write(this.tip);
-    //             //break
-                
-    //         } // tips =[ f(a)]
-    //         //return this.tip;
-    //     } else if( b === "stop"){
-    //         break
-    //     } else {
-    //        alert("Your value is not in our bill's list!")
-    //        //break
-    //        //bill = +prompt("Choose your bill's value: 124, 48, 268, 180, 42 or stop to end: ")
-    //     }
-        
-    // }
+    return '['+ this.tips + ']'+ ' ' + '['+ this.totalPaid+']'; // [18.599999999999998,9.600000000000001,26.8,27,8.4] [142.6,57.6,294.8,207,50.4]
+    }
 
-        
+// question4:
+console.log(john.tipsCal());   
+
+//  for(let i in john){
+//     console.log(i +": "+ john[i]);
+// }      
+
+
+// question5:
+let mark = {
+    bills : [77, 375, 110, 45],
+    totalPaid : [],
+    tips: [],
+};
+
+percent = [0.2, 0.1, 0.25];
+mark.tipsCal = function(){
+    for(let i = 0;i < this.bills.length; i++){
+        if(this.bills[i] < 100){
+
+            this.tips.push(this.bills[i] * percent[0])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+
+        } else if(this.bills[i] >= 10 && this.bills[i] < 300){
+            this.tips.push(this.bills[i] * percent[1])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+        }else{
+            this.tips.push(this.bills[i] * percent[2])
+            this.totalPaid.push(this.bills[i] + this.tips[i])
+        }   
+    }
+    return '['+ this.tips + ']'+ ' ' + '['+ this.totalPaid+']'; // [15.4,93.75,11,9] [92.4,468.75,121,54]
+    }
+
+console.log(mark.tipsCal()); 
+/*
+5. Implement the same functionality as before, this time using Mark's tipping rules
+6. Create a function (not a method) to calculate the average of a given array of tips. HINT: Loop over the array, and in each iteration store the
+ current sum in a variable (starting from 0). After you have the sum of the array, divide it by the number of elements in it (that's how you calculate the average)
+7. Calculate the average tip for each family
+8. Log to the console which family paid the highest tips on average
+*/
+// question6: 
+const averageTips = (arr) => {
+    var sum = arr.reduce(function(a, b){ // sum all elements in arr
+        return a + b;
+    }, 0); // it's a good practice to add 0 for addition or 1 for mult - as initialValue
+    sum = sum / arr.length
+    return sum;
+};
+// question6: 
+console.log(averageTips(mark.tips)); //32.2875
+console.log(averageTips(john.tips)); //18.080000000000002
+
+// question7:
+//const highAverageTip = Math.max(averageTips(mark.tips),averageTips(mark.tips)); 
+if(averageTips(mark.tips) > averageTips(john.tips)){
+    console.log(`Mark's family has the highest average tips: ${averageTips(mark.tips)}`); 
+}else if(averageTips(mark.tips) < averageTips(john.tips)){
+    console.log(`John's family has the highest average tips: ${averageTips(john.tips)}`); 
+} else{
+    console.log(`Both families have the same average tips: ${averageTips(john.tips)}`); 
 }
-    
-    
-
-
-
-
-document.write(calculator.tipsCalculator() + "<br><hr>");
-
-
-
-//document.write(tips+ "<br><hr>");
-
