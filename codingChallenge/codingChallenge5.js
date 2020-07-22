@@ -75,7 +75,7 @@ mark.tipsCal = function(){
             this.tips.push(this.bills[i] * percent[0])
             this.totalPaid.push(this.bills[i] + this.tips[i])
 
-        } else if(this.bills[i] >= 10 && this.bills[i] < 300){
+        } else if(this.bills[i] >= 100 && this.bills[i] < 300){
             this.tips.push(this.bills[i] * percent[1])
             this.totalPaid.push(this.bills[i] + this.tips[i])
         }else{
